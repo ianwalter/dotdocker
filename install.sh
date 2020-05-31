@@ -27,6 +27,6 @@ sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 # Add user to docker group.
-if [[ $(cat /etc/group | grep docker) == '' ]]; then
-  sudo usermod -a -G docker $USER
+if [[ ! `groups $USER | grep docker` ]]; then
+  sudo usermod -aG docker $USER
 fi
